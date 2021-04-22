@@ -70,7 +70,13 @@ for($k=0;$k<$i;$k++){
 }
 
 if($everyThinkOk==true){
-mysqli_query($connection,"INSERT INTO encoded_note_name(name,password,author,expiration_date) values('$hashResult','$password','$author','$expiration_date')" );
+	$password = htmlentities($password, ENT_QUOTES, "UTF-8");
+	$hashedPassword=password_hash($password, PASSWORD_DEFAULT);
+	if($password!="" && $password!=null){
+mysqli_query($connection,"INSERT INTO encoded_note_name(name,password,author,expiration_date) values('$hashResult','$hashedPassword','$author','$expiration_date')" );}
+else{
+	mysqli_query($connection,"INSERT INTO encoded_note_name(name,author,expiration_date) values('$hashResult','$author','$expiration_date')" );
+}
 for($j=0;$j<$i;$j++){
 	 
 	$dc=$uselessArray[$j]->get_contents();
