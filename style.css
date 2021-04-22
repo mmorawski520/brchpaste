@@ -96,7 +96,7 @@ label{
  .item{
      min-width:80px;
      height:6px;
-     background-color:#85CB33;
+     background-color:#EFFFC8;
      float: left;
 }
  .litem{
@@ -108,7 +108,7 @@ label{
      padding-left:6px;
      margin-left:3px;
      list-style-type: none;
-     background-color:#85CB33;
+     background-color:#EFFFC8;
      cursor:pointer;
 }
  .adder{

@@ -3,60 +3,21 @@ var title = "";
 var password = "";
 var note = "";
 var calendar = "";
-var currentPage = 0;
+ 
 var amountOfPages = 0;
 var PageAfterDelete = 0;
 var JustAnArray=[];
 var hidden = false;
 var checker=false;
  var xd=""
-class Note {
-  constructor(author, title, password, note, expiration_date) {
-    this.author = author;
-    this.title = title;
-    this.password = password;
-    this.note = note;
-    this.expiration_date = expiration_date;
-  }
-  //getters
-  get get_expiration_date() {
-    return this.expiration_date
-  }
-  get get_author() {
-    return this.author
-  }
-  get get_title() {
-    return this.title
-  }
-  get get_password() {
-    return this.password
-  }
-  get get_note() {
-    return this.note
-  }
-  //setters
-  set set_expiration_date(variable) {
-    this.expiration_date = variable
-  }
-  set set_author(variable) {
-    this.author = variable
-  }
-  set set_title(variable) {
-    this.title = variable
-  }
-  set set_password(variable) {
-    this.password = variable
-  }
-  set set_note(variable) {
-    this.note = variable
-  }
 
-}
 var ArrayForObjects = []
 JustAnArray=[0]
+if(EditingMode==true){
 ArrayForObjects[currentPage] = new Note("", "", "", "")
-
+}
 function addNewObject() {
+  if(EditingMode==true){
   amountOfPages++
   JustAnArray[amountOfPages]=amountOfPages
   var lel="";
@@ -69,11 +30,12 @@ function addNewObject() {
   document.getElementById("note").value = "";
   document.getElementById("calendar").value = "";
   
-   $(".ButtonPanel").append("<li  id='p" + amountOfPages + "' onclick='current(" + amountOfPages + ")' class='litem'><img  onclick='deleteItem(" + amountOfPages + ")' src='cancel.png' height='33%'' width='auto' style='float:right;margin-top:0.2em;margin-right: 0.2em;'></li>").fadein()
+   $(".ButtonPanel").append("<li  id='p" + amountOfPages + "' onclick='current(" + amountOfPages + ")' class='litem'><img  onclick='deleteItem(" + amountOfPages + ")' src='cancel.png' height='33%'' width='auto' style='float:right;margin-top:0.2em;margin-right: 0.2em;'></li>")
    displayDataInForms()
    current(amountOfPages)
      console.log(ArrayForObjects)
     console.log(JustAnArray)
+  }
 }
 
 //pop up functions
@@ -90,6 +52,12 @@ function pop_up_t_error(){
 
 
 function displayDataInForms(){
+  console.log("====================")
+  if(EditingMode==false){
+   
+  document.getElementById("note").innerHTML = lel[currentPage].contents;
+}
+  if(EditingMode==true){
   try {
      
     document.getElementById("author").value = ArrayForObjects[currentPage].get_author;
@@ -104,31 +72,45 @@ function displayDataInForms(){
     document.getElementById("note").value = ""
     document.getElementById("calendar").value = ""
   }
+}
 
 }
  function current(value) {
-  
+   currentPage = value
+   if(EditingMode==true){
   if(hidden==false){
     $(".main").show()
   }
    
-  currentPage = value
+ 
   for (i = 0; i <= ArrayForObjects.length; i++) {
     if (i == currentPage) {
       $("#p" + i).css("background-color", "#85CB33");
     } else {
       $("#p" + i).css("background-color", "#EFFFC8");
     }
-    displayDataInForms()
+  
   }
 
 if(hidden==true){
   hidden=false;
 }
+}else{
+   
+  for (i = 0; i <=numberOfPages; i++) {
+    if (i == currentPage) {
+      $("#p" + i).css("background-color", "#85CB33");
+    } else {
+      $("#p" + i).css("background-color", "#EFFFC8");
+    }
 
+}
+}
+  displayDataInForms()
 }
 
 function deleteItem(variable) {
+   if(EditingMode==true){
   if(variable>0){
     if(amountOfPages>0){
    amountOfPages--}
@@ -162,6 +144,7 @@ for(i=0;i<=ArrayForObjects.length;i++){
     $("#z"+JustAnArray[i]).attr("onclick","deleteItem("+i+")");
     $("#z"+JustAnArray[i]).attr("id","z"+i); 
     JustAnArray[i]=i
+  }
 }
 }
 }
@@ -180,8 +163,12 @@ $('.form').on('input', function(e) {
       ArrayForObjects[i].set_password = document.getElementById("password").value;
 
     }
+     if(EditingMode==true){
     $("#p" + currentPage).html(document.getElementById("title").value + '<img id="z'+amountOfPages+'" onclick="deleteItem(' + amountOfPages + ')" src="cancel.png" height="33%" width="auto" style="float:right;margin-top:0.2em;margin-right: 0.2em;">');
-     
+     }
+     else{
+      $("#p" + currentPage).html(document.getElementById("title").value);
+     }
   } catch (error) {
    // ArrayForObjects[currentPage] = new Note("", "", "", "")
      

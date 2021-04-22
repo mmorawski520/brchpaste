@@ -1,42 +1,11 @@
 <?php
+require_once "NoteClass.php";
 require_once "connect.php";
 $connection = mysqli_connect($host, $db_user, $db_password, $db_name);
 $isHashGenerated=false;
 $everyThinkOk=true;
 error_reporting(0);
-class Note{
-	private $contents;
-	private $author;
-	private $password;
-	private $title;
-	private $expiration_date;
-	function get_title(){
-		 	return $this->title;
-	}
-	function get_contents(){
-		 	return $this->contents;
-	}
 
-	function get_author(){
-			return $this->author;
-	}
-
-	function get_password(){
-			return $this->password;
-	}
-
-	function get_expiration_date(){
-			return $this->expiration_date;
-	}
-
-	function __construct($contents,$author,$password,$expiration_date,$title){
-		$this->contents=$contents;
-		$this->author=$author;
-		$this->password=$password;
-		$this->expiration_date=$expiration_date;
-		$this->title=$title;
-	}
-}
  
 $uselessArray=array();
 if(!isset($data)){
