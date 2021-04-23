@@ -1,0 +1,2 @@
+It's somethin like pastebin
+Almost everythin is working but on some browsers error messages aren't displayed properly.

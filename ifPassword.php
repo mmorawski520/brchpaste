@@ -13,6 +13,7 @@
 	$result=mysqli_query($connection,"SELECT * FROM encoded_note_name WHERE name='$hash'");
 	if(mysqli_num_rows($result)>0 && $isPassword==false){
 		if($row=mysqli_fetch_assoc($result)){
+			
 			$password=$row["password"];
 			$author=$row["author"];
 			$expiration_date=$row["expiration_date"];
@@ -60,6 +61,7 @@
 		}
 	}
 	if(mysqli_num_rows($result)==0){
-		echo "doesnt exist";
+		echo "doesnt exists";
 	}
+	mysqli_close($connection);
 ?>

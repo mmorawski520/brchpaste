@@ -3,10 +3,23 @@ require_once "NoteClass.php";
 require_once "connect.php";
 $connection = mysqli_connect($host, $db_user, $db_password, $db_name);
 $isHashGenerated=false;
+$IsPasswordCorrect=true;
 $everyThinkOk=true;
 error_reporting(0);
-
- 
+function getIP(){
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+         
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+$ip=getIP();
+$howManyNotesToday=mysqli_num_rows(mysqli_query($connection,"SELECT * FROM encoded_note_name WHERE date_added=current_date()"));
 $uselessArray=array();
 if(!isset($data)){
 $data=json_decode($_POST["dataArray"]);}
@@ -56,6 +69,22 @@ for($k=0;$k<$i;$k++){
 		print_r("note_and_title_error");
 		break;
 	}
+	if(strlen($dt)>20){
+		echo "to_long_title";
+		$everyThinkOk=false;
+		exit();}
+	if(strlen($dt)<3){
+		echo "to_short_title";
+		$everyThinkOk=false;
+		exit();}
+		if(strlen($dc)<20){
+		echo "to_short_note";
+		$everyThinkOk=false;
+		exit();}
+	if(strlen($dc)>3000){
+		echo "to_long_note";
+		$everyThinkOk=false;
+		exit();}
 	if(str_replace(' ', '', $dt)==""){
 		$everyThinkOk=false;
 		 print_r("title_error");
@@ -67,15 +96,41 @@ for($k=0;$k<$i;$k++){
 		break;
 	 
 	}
+	if($howManyNotesToday>5){
+		$everyThinkOk=false;
+		 print_r("too_much_notes_today");
+		 break;
+	}
+	if($i>10){
+		$everyThinkOk=false;
+		 print_r("too_much_notes");
+		 break;
+	}
+	 
 }
 
 if($everyThinkOk==true){
 	$password = htmlentities($password, ENT_QUOTES, "UTF-8");
-	$hashedPassword=password_hash($password, PASSWORD_DEFAULT);
+	if($password!=""){
+	$hashedPassword=password_hash($password, PASSWORD_DEFAULT);}
+	else{
+		$hashedPassword="";
+	}
 	if($password!="" && $password!=null){
-mysqli_query($connection,"INSERT INTO encoded_note_name(name,password,author,expiration_date) values('$hashResult','$hashedPassword','$author','$expiration_date')" );}
+		if(strlen($password)>30){
+		echo "to_long_password";
+		$IsPasswordCorrect=false;
+		exit();}
+		if(strlen($password)<8){
+		echo "to_short_password";
+		$IsPasswordCorrect=false;
+		exit();}
+	}if($IsPasswordCorrect==true){
+mysqli_query($connection,"INSERT INTO encoded_note_name(name,password,author,expiration_date,ip) values('$hashResult','$hashedPassword','$author','$expiration_date','$ip')" );}
 else{
-	mysqli_query($connection,"INSERT INTO encoded_note_name(name,author,expiration_date) values('$hashResult','$author','$expiration_date')" );
+
+	
+	mysqli_query($connection,"INSERT INTO encoded_note_name(name,author,expiration_date,ip) values('$hashResult','$author','$expiration_date','$ip')" );
 }
 for($j=0;$j<$i;$j++){
 	 

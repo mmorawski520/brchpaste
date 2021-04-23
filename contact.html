@@ -3,8 +3,8 @@
    <head>
       <title>brchpaste</title>
       <link rel="stylesheet" href="style.css">
+      <meta charset="UTF-8">
       <script src="jquery-3.6.0.min.js"></script>
-      <script src="JsClass.js"></script>
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,15 +21,20 @@
          var modal = document.getElementById("modal");
          
          
+         
+         
          var span = document.getElementsByClassName("close")[0];
+         
          
          function display_modal() {
          $("#modal").show()
          }
+         
          // When the user clicks on <span> (x), close the modal
          function hide_modal() {
          $("#modal").hide()
          }
+         
          // When the user clicks anywhere outside of the modal, close it
          window.onclick = function(event) {
          if (event.target != modal) {
@@ -47,18 +52,26 @@
       </div>
       <!--Normal side content-->
       <nav class="topnav" id="myTopnav">
-         <a href="index.php" class="active">Stwórz notatkę</a>
-         <a href="rules.html">Regulamin</a>
-         <a href="contact.html">Kontakt</a>
+         <a href="index.php"  >Stwórz notatkę</a>
+         <a href="rules.html" >Regulamin</a>
+         <a href="contact.html" class="active">Kontakt</a>
          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
          <i class="fa fa-bars"></i>
          </a>
       </nav>
       <section class='main'>
-         <script src="AjaxNote.js"></script>
+         <div class='contact' style='float:left;'>
+            <img src="logo.jpg" class='logo'>
+         </div>
+         <div class='data' style='float:left;margin-top:3em;'>
+            <h1 >Imie nazwisko</h1>
+            <br>
+            <h2>Jakiś mail</h2>
+            <br>
+            <h2>jakiś numer 000 000 000</h2>
+         </div>
       </section>
       <!--</form>-->
+      <script>hide_modal()</script>
    </body>
-   <script>hide_modal()</script>
-   <script src="data.js"></script>
 </html>

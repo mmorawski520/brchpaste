@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>brchpaste</title>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="style.css">
+   
+      <script src="jquery-3.6.0.min.js"></script>
+      
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script>
+         function myFunction() {
+               var x = document.getElementById("myTopnav");
+             if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                  x.className = "topnav";
+               }
+         }
+         // Get the modal
+      var modal = document.getElementById("modal");
+
+ 
+
+ 
+var span = document.getElementsByClassName("close")[0];
+
+ 
+function display_modal() {
+  $("#modal").show()
+}
+
+// When the user clicks on <span> (x), close the modal
+function hide_modal() {
+   $("#modal").hide()
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target != modal) {
+     $("#modal").hide()
+  }
+} 
+      </script>
+   </head>
+   <body>
+      <!-- modal box-->
+      <div id="modal" class="modalc">
+      <div class="modal-c">
+          
+         <p class='modal_p'></p>
+       </div>
+</div>
+
+
+      <!--Normal side content-->
+      <nav class="topnav" id="myTopnav">
+         <a href="index.php"  >Stwórz notatkę</a>
+         <a href="rules.html"class="active">Regulamin</a>
+         <a href="contact.html">Kontakt</a>
+         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <i class="fa fa-bars"></i>
+         </a>
+      </nav>
+
+      <section style='margin-top:3em;margin-left:auto;margin-right:auto;width:80%;background-color:white;color:black; ' class='main'>
+        <h1 style='color:black;margin-top:1.5em;margin-bottom:1.5em;'>Regulamin serwisu brchpaste</h1>
+       <p style="color:black"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum eros lorem. Duis bibendum ante in sollicitudin suscipit. Donec tempor pellentesque pulvinar. Vivamus non feugiat ante, in sollicitudin ligula. Nullam eros sem, malesuada id dictum sit amet, eleifend ut felis. Nulla venenatis ipsum vel ullamcorper blandit. Proin rutrum hendrerit justo vitae commodo. Donec convallis dignissim massa.
+
+        <br>
+        <br>
+Donec iaculis neque at mi tristique volutpat. Sed semper luctus odio, et feugiat metus iaculis in. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis mollis augue sit amet dui aliquet, at mattis velit vestibulum. Cras porttitor mi dictum velit molestie, eget consectetur arcu mattis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum vitae vulputate turpis. Praesent convallis enim tortor, in tempus nibh lacinia vitae. Donec in lectus ac risus viverra fermentum quis vehicula quam. Donec ut tortor leo. Vestibulum vel turpis id magna accumsan eleifend. Etiam eleifend volutpat velit, ut varius mi faucibus vitae. Proin sit amet tristique dolor, ac ornare risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+<br>
+<br>
+Integer nec finibus augue, eu dignissim mauris. Nunc dolor lorem, egestas elementum neque eget, ornare molestie risus. Nam consequat nec neque in dictum. Nulla gravida nulla sed neque pulvinar efficitur. Maecenas at semper erat. Aliquam erat volutpat. Ut finibus odio leo, ut laoreet nunc tempus at. Nunc vitae lacus dictum, lacinia ante a, mattis erat. Suspendisse nec leo a est euismod venenatis. Cras tortor est, placerat nec porta eu, pharetra ut dui. Aenean ut consequat lorem, in consequat odio. Suspendisse purus tortor, blandit quis dignissim vitae, consectetur sed quam. Aenean risus lacus, accumsan eu lectus sit amet, rutrum auctor eros. Pellentesque venenatis tincidunt mauris elementum consectetur.
+<br>
+<br>
+Sed rutrum risus eros, at dapibus lectus mollis ut. Mauris augue odio, commodo a lectus non, vestibulum sollicitudin erat. Pellentesque viverra tempor quam nec blandit. Integer aliquam dolor vitae dui posuere imperdiet. Etiam a convallis dui. Duis nec risus commodo lectus laoreet congue vehicula ac libero. In volutpat et lectus a hendrerit. Suspendisse lobortis ultricies lectus sed ornare. Quisque pharetra gravida condimentum. Pellentesque tempor interdum ipsum ac accumsan. Quisque augue purus, ornare molestie tincidunt nec, efficitur eget enim. Sed lorem mauris, ultricies lacinia urna quis, eleifend efficitur nibh. Proin at mi malesuada urna posuere tincidunt. Vestibulum imperdiet dui congue sapien finibus tempus. </p>
+ 
+   </section>
+      <!--</form>-->
+        <script>hide_modal()</script>
+   </body>
+  
+  
+  
+</html>
+
