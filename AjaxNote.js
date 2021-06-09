@@ -94,7 +94,7 @@ if (urlParams.get('hash') == null) {
                 })
             } else {
                 isPassword = true;
-                $(".main").append("<label>Podaj hasło<br><span style='color:red;font-size:.5em;'class='passwordError'></span><br><input id='getPassword' name='GetPassword' type='password'></label><br><input onclick='get_logged()' type='submit' value='zaloguj'>")
+                $(".main").append("<div style='text-align:center'><label>Podaj hasło<br><span style='color:red;font-size:.5em;'class='passwordError'></span><br><input id='getPassword' name='GetPassword' type='password'></label><br><input onclick='get_logged()' type='submit' value='zaloguj'></div>")
             }
 
         }
