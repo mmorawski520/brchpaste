@@ -86,28 +86,24 @@ function current(value) {
             $(".main").show()
         }
 
-
         for (i = 0; i <= ArrayForObjects.length; i++) {
             if (i == currentPage) {
                 $("#p" + i).css("background-color", "#85CB33");
             } else {
                 $("#p" + i).css("background-color", "#EFFFC8");
             }
-
         }
 
         if (hidden == true) {
             hidden = false;
         }
     } else {
-
         for (i = 0; i <= numberOfPages; i++) {
             if (i == currentPage) {
                 $("#p" + i).css("background-color", "#85CB33");
             } else {
                 $("#p" + i).css("background-color", "#EFFFC8");
             }
-
         }
     }
     displayDataInForms()
@@ -120,15 +116,14 @@ function deleteItem(variable) {
                 amountOfPages--
             }
             delete ArrayForObjects[variable]
-
             delete JustAnArray[variable]
+			
             ArrayForObjects.splice(variable, 1)
             JustAnArray.splice(variable, 1)
 
             $("#p" + variable).remove()
 
-
-            var i = 0;
+			var i = 0;
             if (variable == currentPage) {
                 console.log('ready')
                 $(".main").hide()
